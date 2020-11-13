@@ -1,0 +1,30 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first" id="logo">
+      <img src="assets/img/heart-beat-icon (2).png" class="brand_logo" alt="Logo" />
+    </div>
+    <div>
+      <form>
+        <div>
+          <img src="assets/img/login1.png" class="fadeIn second" id="foto">
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login" [(ngModel)]="email">
+        </div>
+        <div>&nbsp;</div>
+
+        <div>
+          <img src="assets/img/chave.png" class="fadeIn third" id="foto">
+          <input type="password" id="password" class="fadeIn third" name="login" placeholder="Senha"
+            [(ngModel)]="senha">
+        </div>
+        <div>&nbsp;</div>
+
+      </form>
+
+      <div id="formFooter" class="fadeIn fourth">
+        <button type="button" class="btn btn-outline-primary btn" (click)="insereUsuario()">Entrar</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-success btn" (click)="cadastro()">Cadastre-se</button>
+      </div>
+    </div>
+
+
+  </div>

@@ -1,0 +1,29 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <div class="fadeIn first" id="logo">
+      <img src="assets/img/heart-beat-iconv.png" />
+    </div>
+
+    <form>
+
+      <input type="text" id="nome" class="fadeIn first" name="nome" placeholder="Nome" />
+      <input type="text" id="sobrenome" class="fadeIn first" name="sobrenome" placeholder="sobrenome" />
+
+      <input type="number" id="Coren" class="fadeIn second" name="Coren" placeholder="Coren" />
+      <input type="number" id="Idade" class="fadeIn second" name="Idade" placeholder="Idade" />
+
+      <input type="textare" id="email" class="fadeIn third" name="email" placeholder="exemplo@exemplo.com"
+        [(ngModel)]="email" />
+
+      <input type="password" id="password" class="fadeIn fourth" name="senha" placeholder="Senha" [(ngModel)]="senha" />
+      <input type="password" id="passwordConfirm" class="fadeIn fourth" name="senhaConfirm" placeholder="Confirmar" />
+      <div>&nbsp;</div>
+
+      <div id="formFooter" class="fadeIn fourth">
+        <button type="button" class="btn btn-outline-primary btn" (click)="login()">Enviar</button>&nbsp;&nbsp;
+        <button class="btn  btn-outline-danger btn" type="reset">limpar</button>
+      </div>
+    </form>
+  </div>
+</div>
