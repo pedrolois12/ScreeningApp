@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
-import {  ScreeningServiceService } from '../screening-service.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router , NavigationExtras, ActivatedRoute} from '@angular/router';
+import { DorabdominalPage } from '../dorabdominal/dorabdominal.page';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -10,36 +10,39 @@ import {  ScreeningServiceService } from '../screening-service.service';
   styleUrls: ['./triagem.page.scss'],
 })
 export class TriagemPage implements OnInit {
+ public  nome="";
+ public  cpf="";
+  
   public selecionar;
   public lista_sintoma =new Array<any>();
 
-  constructor(public route:Router, public screeningServ : ScreeningServiceService) { }
 
-  carregaPagina(){
-    this.screeningServ.getSintomas().subscribe(
-    data =>{
-          const response = (data as any);
-          this.lista_sintoma = this.lista_sintoma.concat(response);
-          console.log(this.lista_sintoma);
-    },
-    error =>{
-      console.log(error);
-    }
-    );
-  }
+  constructor(public route:Router, public navCtrl:NavController , public actRoute:ActivatedRoute) { }
+
+
   ngOnInit() {
-    this.carregaPagina();
+
+
   }
 
   escolhe_fluxo(){
+   let valores=[{
+     nome:this.nome,
+     cpf:this.cpf
+   }]
+
+    console.log(this.nome + this.cpf)
 
     console.log(this.selecionar);
     if(this.selecionar=="1"){
-      this.route.navigate(["./dorabdominal"]).then(nav=>{
-        window.location.reload();
+      
+      this.route.navigate(["./dorabdominal"], {queryParams: {nome:this.nome, cpf:this.cpf} } ).then(nav=>{
+         window.location.reload();
+        
       });
 
     }
 
 }
+
 }

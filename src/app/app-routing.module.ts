@@ -29,6 +29,10 @@ const routes: Routes = [
     path: 'dorabdominal',
     loadChildren: () => import('./dorabdominal/dorabdominal.module').then( m => m.DorabdominalPageModule)
   },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },
 ];
 
 @NgModule({

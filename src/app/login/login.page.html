@@ -1,28 +1,30 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first" id="logo">
+      <img src="assets/img/heart-beat-icon (2).png" class="brand_logo" alt="Logo" />
+    </div>
+    <div>
+      <form>
+        <div>
+          <img src="assets/img/login1.png" class="fadeIn second" id="foto">
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login" [(ngModel)]="email">
+        </div>
+        <div>&nbsp;</div>
 
-<ion-content>
-  <div>
-    <alert type="danger">OI </alert>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" [(ngModel)]="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <div>
+          <img src="assets/img/chave.png" class="fadeIn third" id="foto">
+          <input type="password" id="password" class="fadeIn third" name="login" placeholder="Senha"
+            [(ngModel)]="senha">
+        </div>
+        <div>&nbsp;</div>
+
+      </form>
+
+      <div id="formFooter" class="fadeIn fourth">
+        <button type="button" class="btn btn-outline-primary btn" (click)="insereUsuario()">Entrar</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-success btn" (click)="cadastro()">Cadastre-se</button>
+      </div>
     </div>
 
 
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" [(ngModel)]="senha" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="button" (click)="insereUsuario()" class="btn btn-success">Entrar</button>
-    <button type="button" class="btn btn-success">Cadastrar</button>
   </div>
-</ion-content>

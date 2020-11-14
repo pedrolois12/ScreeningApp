@@ -9,23 +9,29 @@ export class ScreeningServiceService {
 
   constructor(public http:HttpClient) { }
 
-  public url ="http://localhost:8080/api/"
+  public url ="http://triagemservice.ddns.net:8081/api/"
 
   httpOption ={
     headers: new HttpHeaders(
       {'Content-type' :['application/json'],
-    
       }
   )
   }
 
   getSintomas(){
     let sintomas = this.url+"getSintomas";
-    return this.http.get(sintomas);
+    return this.http.get(sintomas, this.httpOption);
   }
 
   inserePaciente(paciente:any){
     let sintomas = this.url+"create";
     return this.http.post(sintomas, paciente, this.httpOption);
   }
+
+
+  enviaEmail(paciente:any){
+    let sintomas = this.url+"enviarEmail";
+    return this.http.post(sintomas, paciente, this.httpOption)
+  }
+
 }

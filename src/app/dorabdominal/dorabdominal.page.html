@@ -6,14 +6,12 @@
 
 <ion-content>
 <div class="container">
-
  <div class="row">
    <div class="column">
       <label> Marque as opções que se encaixam ao quadro do Paciente</label>
       <br>
       <h6> {{this.recupera_sintoma}} </h6>
   </div>
-
 </div> 
 
 <div class="row align-items-start">
@@ -26,8 +24,9 @@
 </div> 
 <div class="row">
   <div class="column">
-     <button type="button" class="btn-success"> Triar! </button>
+     <button type="button" (click)="getData()" class="btn-success"> Triar! </button>
  </div>
 </div>  
 </div>
+
 </ion-content>
