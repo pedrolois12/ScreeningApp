@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>triagem</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" [(ngModel)]="nome" placeholder="Nome">
+      <input type="text" class="form-control" [(ngModel)]="cpf" placeholder="CPF">
+      
+      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">CADE</label>
+      <select (change)="escolhe_fluxo()" [(ngModel)] ="selecionar" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option id="select" selected>Escolha o fluxo.</option>
+        <option value="1">Dor abdominal</option> 
+        <option value="2">Abcessos ou infecções locais</option> 
+        <option value="3">Alergia</option> 
+        <option value="4">Dor nas costas</option> 
+      </select>
+    </div>
+  </div>
+</ion-content>
