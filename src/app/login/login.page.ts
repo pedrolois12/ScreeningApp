@@ -41,7 +41,14 @@ export class LoginPage implements OnInit {
     }) 
   }
 
-  async exibeMensagem(){
+  cadastro(){
+    this.router.navigate(['/cadastro']).then(nav => {
+      window.location.reload();
+      console.log(nav);
+    });
+  }
+
+  async exibeMensagem(){  
     const toast = await this.ToastController.create({
       message:this.mensagem,
       duration:1700

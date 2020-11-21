@@ -11,7 +11,8 @@ import { TriagemPage } from './triagem.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TriagemPageRoutingModule
+    TriagemPageRoutingModule,
+
   ],
   declarations: [TriagemPage]
 })

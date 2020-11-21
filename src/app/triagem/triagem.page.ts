@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router , NavigationExtras, ActivatedRoute} from '@angular/router';
 import { DorabdominalPage } from '../dorabdominal/dorabdominal.page';
 import { NavController } from '@ionic/angular';
+import { fromEventPattern } from 'rxjs';
+import { ScreeningServiceService} from '../screening-service.service';
 
 
 @Component({
@@ -10,18 +12,36 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./triagem.page.scss'],
 })
 export class TriagemPage implements OnInit {
- public  nome="";
- public  cpf="";
-  
+  public  nome="";
+  public  cpf="";
   public selecionar;
-  public lista_sintoma =new Array<any>();
+  public lista_fluxo =new Array<any>();
 
 
-  constructor(public route:Router, public navCtrl:NavController , public actRoute:ActivatedRoute) { }
+  constructor(public route:Router,
+     public navCtrl:NavController ,
+     public actRoute:ActivatedRoute,
+     public screeningservice:ScreeningServiceService
+  
+     
+) { }
 
 
   ngOnInit() {
+    this.resgataFluxo();
 
+  }
+
+  resgataFluxo(){
+
+    this.screeningservice.listFluxos().subscribe(
+      
+    data =>{
+        this.lista_fluxo = this.lista_fluxo.concat(data);
+    }, 
+    errs=>{
+      console.log(errs);
+    })
 
   }
 
@@ -32,11 +52,10 @@ export class TriagemPage implements OnInit {
    }]
 
     console.log(this.nome + this.cpf)
-
     console.log(this.selecionar);
-    if(this.selecionar=="1"){
-      
-      this.route.navigate(["./dorabdominal"], {queryParams: {nome:this.nome, cpf:this.cpf} } ).then(nav=>{
+    if(this.selecionar){
+    
+      this.route.navigate(["./dorabdominal"], {queryParams: {nome:this.nome, cpf:this.cpf, fluxo:this.selecionar} } ).then(nav=>{
          window.location.reload();
         
       });

@@ -12,6 +12,7 @@ import { AngularFireModule} from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+//import { FontAwesomeModule } from '@fortawesome/fontawesome-free/webfonts';
 
 
 
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule
   , AngularFireModule.initializeApp(environment.firebaseConfig),
   AngularFireAuthModule,
-  HttpClientModule
+  HttpClientModule,
+  //FontAwesomeModule
   ],
   providers: [
     StatusBar,

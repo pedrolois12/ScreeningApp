@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Dor Abdominal</ion-title>
+    <ion-title>{{this.fluxo}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<div class="container">
+<div class="container" (load)="document.getElementById('Pintao7').click()">
  <div class="row">
    <div class="column">
       <label> Marque as opções que se encaixam ao quadro do Paciente</label>
@@ -17,16 +17,32 @@
 <div class="row align-items-start">
   <div class="column">
     <div class="btn-group-vertical">
-     <button  type="button"  class="butoes btn-info"   *ngFor="let sintoma of lista_sintoma" value={{sintoma.sintoma}} (click)="mostra_valor(sintoma.sintoma)" > {{sintoma.desc_sintoma}} </button>
+     <button  type="button"  class="butoes btn-info "   *ngFor="let sintoma of lista_sintoma" value={{sintoma.sintoma}} (click)="mostra_valor(sintoma.sintoma)" > {{sintoma.desc_sintoma}} </button> 
     </div>
+    
  </div>
 
 </div> 
 <div class="row">
-  <div class="column">
+  <div class="column" >
      <button type="button" (click)="getData()" class="btn-success"> Triar! </button>
  </div>
 </div>  
+<div class="row">
+  <div class="column">
+    <label>Escala de 0 a 10 qual a dor o paciente está sentido </label>
+    <div class="btn-group" role="group" aria-label="Basic example" >
+      <button type="button" name ="escala_dor" class="btn btn-secondary"*ngFor="let escala_dor of this.lista_dor" value={{escala_dor.intensidade}} > {{escala_dor.num_escala}}</button>
+    </div>
+    
+ </div>
+</div> 
+<div class="row">
+  <button type="button" id="Pintao7" class="btn-primary" (click)="escala_dor_cor()" autofocus> oi</button> 
+  <input type="text" (focus)="escala_dor_cor()" id="Pintao8" autofocus="true">
+ </div>
+
+
 </div>
 
 </ion-content>

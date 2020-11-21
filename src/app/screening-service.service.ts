@@ -34,4 +34,19 @@ export class ScreeningServiceService {
     return this.http.post(sintomas, paciente, this.httpOption)
   }
 
+  getFluxo(id:any){
+    let sintomas = this.url+"getFluxos"+id;
+    return this.http.get(sintomas, this.httpOption);
+  }
+
+  listFluxos(){
+    let sintomas=this.url+"getFluxos"
+    return this.http.get(sintomas, this.httpOption);
+  }
+
+  getEscalaDor(){
+    let sintomas=this.url+"getEscalaDor"
+    return this.http.get(sintomas, this.httpOption);
+  }
+
 }

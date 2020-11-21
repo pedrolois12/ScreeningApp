@@ -5,11 +5,14 @@
       <img src="assets/img/heart-beat-iconv.png" />
     </div>
 
-    <form>
+      <form>
       <input type="text" id="nome" class="fadeIn first" name="nome" placeholder="Nome" />
       <input type="text" id="sobrenome" class="fadeIn first" name="sobrenome" placeholder="sobrenome" />
 
-      <input type="number" id="Coren" class="fadeIn second" name="Coren" placeholder="Coren" />
+      <input type="text" id="Coren" [(ngModel)] ="coren"  
+        title ="Coren deve seguir o padrão = XXXXX-TE / XXXXX-ENF /XXXXX-AE" 
+        class="fadeIn second" name="Coren" placeholder="XXXXX-(TE/ENF/AE)" 
+        (change) ="mascara_coren()" pattern="([A-Z]|[0-9]){5}-(TE|ENF|AE)" required/>
       <input type="number" id="Idade" class="fadeIn second" name="Idade" placeholder="Idade" />
 
       <input type="textare" id="email" class="fadeIn third" name="email" placeholder="exemplo@exemplo.com"
@@ -17,12 +20,13 @@
 
       <input type="password" id="password" class="fadeIn fourth" name="senha" placeholder="Senha" [(ngModel)]="senha" />
       <input type="password" id="passwordConfirm" class="fadeIn fourth" name="senhaConfirm" placeholder="Confirmar" />
-      <div>&nbsp;</div>
+      <!-- <div>&nbsp;</div> -->
 
       <div id="formFooter" class="fadeIn fourth">
-        <button type="button" class="btn btn-outline-primary btn" (click)="login()">Enviar</button>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-outline-primary btn" >Enviar</button>
         <button class="btn  btn-outline-danger btn" type="reset">limpar</button>
       </div>
+
     </form>
   </div>
 </div>
