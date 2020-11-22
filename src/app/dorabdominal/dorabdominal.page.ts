@@ -2,8 +2,10 @@ import { Component, Input, OnInit, AfterViewInit, OnChanges } from '@angular/cor
 import { concat, fromEventPattern } from 'rxjs';
 import { ScreeningServiceService } from '../screening-service.service';
 import { HttpClientModule, HttpHeaders, HttpParams } from '@angular/common/http';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+import { ModalPage } from '../modal/modal.page';
+import { ModalOnePage } from '../modal-one/modal-one.page';
 
 @Component({
   selector: 'app-dorabdominal',
@@ -13,7 +15,7 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
 
   constructor(public http: HttpClientModule, public screeningServ: ScreeningServiceService, public navCtrl: NavController,
-    public route: Router, public actRoute: ActivatedRoute
+    public route: Router, public actRoute: ActivatedRoute, public modalCtrl:ModalController
 
   ) { }
   public sintoma;
@@ -34,20 +36,22 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
 
   public recupera_sintoma = " ";
 
-  ngOnChanges(){
+
+
+  ngOnChanges() {
     document.getElementById("Pintao7").click()
-    document.getElementById('Pintao8').innerHTML ="Ola mundo";
-    console.log(document.getElementById("Pintao7").click()+"ngafterview");
+    document.getElementById('Pintao8').innerHTML = "Ola mundo";
+    console.log(document.getElementById("Pintao7").click() + "ngafterview");
     //window.location.reload()
   }
-  ngAfterViewInit(){
-   
+  ngAfterViewInit() {
+
   }
 
   ngOnInit() {
     this.carregaPagina();
-    
-    
+
+
   }
 
 
@@ -78,7 +82,7 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
         console.log(error);
       }
     );
-   
+
   }
 
   getData() {
@@ -117,20 +121,12 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
       html: msg
     }
 
-
-
     let pac = JSON.stringify(paciente);
     console.log(pac);
     this.screeningServ.enviaEmail(pac).subscribe(data => {
       console.log(data);
     });
-
-
-
   }
-  
-
-  
 
   mostra_valor(valor: string) {
     var botoes = document.getElementsByTagName("button");
@@ -168,25 +164,33 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
     }
 
 
-    
+
 
   }
 
-   escala_dor_cor(){
+  escala_dor_cor() {
     let dor = document.getElementsByTagName("button");
 
 
-    for(var i =0 ; i < dor.length; i++){
+    for (var i = 0; i < dor.length; i++) {
       console.log(dor[i].value + i)
-         if(dor[i].value =="Sem dor"){
-          dor[i].style.backgroundColor= "#99ff66"
-         }
-      
+      if (dor[i].value == "Sem dor") {
+        dor[i].style.backgroundColor = "#99ff66"
+      }
+
     }
-  
 
-
-    
   }
+
+
+  async showModal() {
+    const modal = await this.modalCtrl.create({
+      component: ModalOnePage,
+    });
+
+  modal.present();  
+}
+
+
 
 }

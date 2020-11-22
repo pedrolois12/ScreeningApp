@@ -25,6 +25,7 @@
     padding: 30px;
     width: 90%;
     max-width: 850px;
+    height: 443.2px;    
     position: relative;
     padding: 0px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
@@ -350,3 +351,12 @@ input[type="number"]:placeholder {
 #icon {
     width: 60%;
 }
+
+.enviar_btn {
+    border-radius: 15px !important;
+  
+  }
+  
+  .limpar_btn {
+    border-radius: 15px !important;
+  }

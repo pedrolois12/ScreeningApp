@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DorabdominalPageRoutingModule } from './dorabdominal-routing.module';
 
 import { DorabdominalPage } from './dorabdominal.page';
+import { ModalOnePage } from '../modal-one/modal-one.page';
 
 @NgModule({
   imports: [
@@ -15,6 +16,11 @@ import { DorabdominalPage } from './dorabdominal.page';
     IonicModule,
     DorabdominalPageRoutingModule
   ],
-  declarations: [DorabdominalPage]
+  declarations: [DorabdominalPage, ModalOnePage],
+  entryComponents: [ModalOnePage]
 })
-export class DorabdominalPageModule {}
+export class DorabdominalPageModule {
+
+  constructor(){}
+
+}

@@ -20,4 +20,17 @@ export class MenuPage implements OnInit {
     });    ;
   }
 
+  
+  historico(){
+    this.router.navigate(['./historico']).then(nav=>{
+    window.location.reload();
+    });    ;
+  }
+
+  fila(){
+    this.router.navigate(['./fila']).then(nav=>{
+    window.location.reload();
+    });    ;
+  }
+
 }

@@ -33,6 +33,22 @@ const routes: Routes = [
     path: 'cadastro',
     loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
   },
+  {
+    path: 'historico',
+    loadChildren: () => import('./historico/historico.module').then( m => m.HistoricoPageModule)
+  },
+  {
+    path: 'fila',
+    loadChildren: () => import('./fila/fila.module').then( m => m.FilaPageModule)
+  },
+  {
+    path: 'modal',
+    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
+  },
+  {
+    path: 'modal-one',
+    loadChildren: () => import('./modal-one/modal-one.module').then( m => m.ModalOnePageModule)
+  },
 ];
 
 @NgModule({

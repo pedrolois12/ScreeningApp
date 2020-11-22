@@ -1,20 +1,31 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>triagem</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+     
+      <div class="text-white"  class="d-flex justify-content-center" >
+        <div class="card-header">
+            <h4>Triagem</h4>       
+        </div>
+      </div>
 
-<ion-content>
-  <div class="row">
-    <div class="col">
-      <input type="text" class="form-control" [(ngModel)]="nome" placeholder="Nome">
-      <input type="text" class="form-control" [(ngModel)]="cpf" placeholder="CPF">
-      <i class="fas fa-camera fa-xs"></i>
-      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">CADE</label>
-      <select (change)="escolhe_fluxo()" [(ngModel)] ="selecionar" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option  id="select" selected>Escolha o fluxo.</option>
-        <option *ngFor= "let fluxo of this.lista_fluxo" value="{{fluxo.nome}}">{{fluxo.nome}}</option> 
-      </select>
+      <div class="card-body">
+
+        <div class="input-group mb-3">
+
+          <input type="text" id="nome" class="fadeIn first" name="nome" placeholder="Nome" />
+          <input type="text" id="sobrenome" class="fadeIn first" name="sobrenome" placeholder="sobrenome" />
+
+        </div>
+
+        <div class="input-group mb-3">
+         
+          <select (change)="escolhe_fluxo()" [(ngModel)] ="selecionar" class="custom-select mr-sm-2" id="inlineFormCustomSelect" id="sele" >
+            <option title="Escolha o fluxo:" id="select" selected>Escolha o fluxo:</option>
+            <option *ngFor= "let fluxo of this.lista_fluxo" value="{{fluxo.nome}}">{{fluxo.nome}}</option> 
+          </select>
+        </div>
+      </div>
+
     </div>
   </div>
-</ion-content>
+</div>
