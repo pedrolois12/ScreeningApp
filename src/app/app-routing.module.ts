@@ -42,10 +42,6 @@ const routes: Routes = [
     loadChildren: () => import('./fila/fila.module').then( m => m.FilaPageModule)
   },
   {
-    path: 'modal',
-    loadChildren: () => import('./modal/modal.module').then( m => m.ModalPageModule)
-  },
-  {
     path: 'modal-one',
     loadChildren: () => import('./modal-one/modal-one.module').then( m => m.ModalOnePageModule)
   },

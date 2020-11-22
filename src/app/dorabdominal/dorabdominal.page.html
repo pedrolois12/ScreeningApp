@@ -6,30 +6,13 @@
       <div class="column">
         <label> </label>
         <br>
-        <ion-button expand="block" (click)="showModal()" >Sintomas escolhidos</ion-button>
+        <ion-button expand="block" (click)="showModal()" >Sintomas escolhidos</ion-button>   
       </div>
 
     </div>
     <div class="wrapper fadeInDown">
       <div id="formContent">
-        <div class="row align-items-start">
-          <div class="column">
-            <div class="list-group">
-              <button type="button" class="list-group-item list-group-item-action active">
-                Quadro de sintomas
-              </button>
-
-              <button type="button" class="list-group-item list-group-item-light" *ngFor="let sintoma of lista_sintoma"
-                value={{sintoma.sintoma}} (click)="mostra_valor(sintoma.sintoma)" id="butoes"> {{sintoma.desc_sintoma}} </button>
-            </div>
-          </div>
-
-        </div>
-        <div class="row">
-          <div class="column">
-            <button type="button" class="btn-success"> Triar! </button>
-          </div>
-        </div>
+        
         <div class="row">
           <div class="column">
             <label>Escala de 0 a 10 qual a dor o paciente está sentido </label>
@@ -42,13 +25,12 @@
           </div>
         </div>
         <div class="row">
-          <button type="button" id="Pintao7" class="btn-primary" (click)="escala_dor_cor()" autofocus> oi</button>
-          <input type="text" (focus)="escala_dor_cor()" id="Pintao8" autofocus="true">
+          <div class="column">
+            <button type="button" class="btn-success"> Triar! </button>
+          </div>
         </div>
-
       </div>
     </div>
   </div>
-
 
 </ion-content>

@@ -9,6 +9,17 @@
 
 <ion-content>
 
-  <h6> {{this.recupera_sintoma}} </h6>
- 
+  <div class="row align-items-start">
+    <div class="column">
+      <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action active">
+          Quadro de sintomas
+        </button>
+
+        <button type="button" class="list-group-item list-group-item-light" *ngFor="let sintoma of lista_sintoma"
+          value={{sintoma.sintoma}} (click)="mostra_valor(sintoma.sintoma)" id="butoes"> {{sintoma.desc_sintoma}} </button>
+      </div>
+    </div>
+  </div>
+
 </ion-content>

@@ -4,7 +4,6 @@ import { ScreeningServiceService } from '../screening-service.service';
 import { HttpClientModule, HttpHeaders, HttpParams } from '@angular/common/http';
 import { ModalController, NavController } from '@ionic/angular';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
-import { ModalPage } from '../modal/modal.page';
 import { ModalOnePage } from '../modal-one/modal-one.page';
 
 @Component({
@@ -31,18 +30,14 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
   public flag_verde: boolean;
   public flag_azul: boolean;
   public data;
-  public algo;
   public fluxo;
-
+  public pega_modal;
   public recupera_sintoma = " ";
 
 
 
   ngOnChanges() {
-    document.getElementById("Pintao7").click()
-    document.getElementById('Pintao8').innerHTML = "Ola mundo";
-    console.log(document.getElementById("Pintao7").click() + "ngafterview");
-    //window.location.reload()
+
   }
   ngAfterViewInit() {
 
@@ -88,22 +83,6 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
   getData() {
     let color;
     let flag;
-    if (this.flag_vermelho) {
-      flag = "VERMELHO"
-      color = "red";
-    } else if (this.flag_amarelo) {
-      flag = "AMARELO";
-      color = "yellow";
-    } else if (this.flag_laranja) {
-      flag = "LARANJA"
-      color = "orange";
-    } else if (this.flag_verde) {
-      flag = "VERDE"
-      color = "green";
-    } else if (this.flag_azul) {
-      flag = "AZUL"
-      color = "blue";
-    }
 
     let params;
     this.actRoute.queryParams.subscribe(data => {
@@ -137,8 +116,6 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
         console.log(botoes[i].value + valor)
         botoes[i].disabled = true;
         botoes[i].style.backgroundColor = "gray";
-
-
         for (var j = 0; j < this.lista_sintoma.length; j++) {
           if (valor == this.lista_sintoma[j].sintoma) {
             aux = this.lista_sintoma[j].desc_sintoma;
@@ -159,22 +136,14 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
         }
         break;
       }
-
-
     }
-
-
-
-
   }
 
   escala_dor_cor() {
     let dor = document.getElementsByTagName("button");
-
-
     for (var i = 0; i < dor.length; i++) {
       console.log(dor[i].value + i)
-      if (dor[i].value == "Sem dor") {
+    if (dor[i].value == "Sem dor") {
         dor[i].style.backgroundColor = "#99ff66"
       }
 
@@ -183,12 +152,33 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
   }
 
 
-  async showModal() {
+async showModal() {
     const modal = await this.modalCtrl.create({
       component: ModalOnePage,
+      componentProps:{
+        'fluxo': this.fluxo
+      }
+      
     });
-
   modal.present();  
+
+let data = (await modal.onWillDismiss());
+console.log(data.data.flag);
+console.log(data.data.sintomas);
+
+for(let i = 0; i <= data.data.sintomas.length-1; i++){
+    if(i == 0){
+      this.recupera_sintoma += data.data.sintomas[i];
+    }
+    else {
+      this.recupera_sintoma +=","+data.data.sintomas[i];
+    }
+   
+
+}
+console.log(this.recupera_sintoma);
+
+
 }
 
 

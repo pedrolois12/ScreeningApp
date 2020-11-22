@@ -19,8 +19,7 @@
 
         <div class="input-group mb-3">
          
-          <select (change)="escolhe_fluxo()" [(ngModel)] ="selecionar" class="custom-select mr-sm-2" id="inlineFormCustomSelect" id="sele" >
-            <option title="Escolha o fluxo:" id="select" selected>Escolha o fluxo:</option>
+          <select (change)="escolhe_fluxo()" [(ngModel)] ="selecionar" class="custom-select mr-sm-2" id="inlineFormCustomSelect" id="sele" placeholder="Escolha o Fluxo">
             <option *ngFor= "let fluxo of this.lista_fluxo" value="{{fluxo.nome}}">{{fluxo.nome}}</option> 
           </select>
         </div>
