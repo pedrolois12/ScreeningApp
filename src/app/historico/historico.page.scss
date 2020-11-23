@@ -1,0 +1,129 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 10px;
+    height: 90%;
+    border-radius: 15px !important;
+}
+
+#formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #13475fa6;
+    padding: 20px;
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 0 30px 60px 0 rgba(255, 255, 255, 0.4);
+    text-align: center;
+}
+
+td,
+th {
+    background-color: rgba(255, 255, 255, 0.4);
+    border: none;
+    color: #0d0d0d;
+    padding: 4px 4px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 11px;
+    margin: 5px;
+    width: 30%;
+    height: 30%;
+    border: 1px solid  #ffffff;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    font-weight: bold;
+}
+
+#bor {
+    border: 1px solid #ffffff;
+}
+
+input[type="text"] {
+    background-color: rgba(255, 255, 255, 0.4);
+    border: none;
+    color: #0d0d0d;
+    padding: 4px 4px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 11px;
+    margin: 5px;
+    width: 40%;
+    height: 30%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    font-weight: bold;
+}
+
+input[type="text"]:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #5fbae9;
+}
+
+input[type="text"]:placeholder {
+    color: #cccccc;
+    font-weight: bold;
+}
+
+table{
+    background: #13475fa6;
+     border: 1px solid #ffffff;
+}
+
+.card{
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 15px !important;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5) !important;
+    }
+    
+    
+    .card-header h4{
+    color: white;
+    }
+
+    .zoom1 {
+        padding: 5px;
+        transition: transform .2s;
+        /* Animation */
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+        color: rgb(246, 246, 246);
+        font-family: Verdana;
+        border-radius: 15px !important;
+      }
+      
+      .zoom1:hover {
+        font-family: Verdana;
+        transform: scale(1.0);
+        /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        font-weight: bolder;
+        background-color: rgb(246, 246, 246, 0.5);
+        border-radius: 15px !important;
+        width: 60%;
+        height: 40%;
+      }
+
+      #icon{
+        padding-left:30px;
+      }
