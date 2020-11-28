@@ -1,49 +1,78 @@
-<dvi class="container h-100">
-	<div class="d-flex justify-content-center">
-		<div class="card mt-5 col-md-4 animated bounceInDown myForm">
-    
-      <div class="card-header">
-				<h4>Fila de espera</h4>
-			</div>
-    
-      <div class="card-body">
 
-				<form>
-					<div id="dynamic_container">
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text br-15"><i class="fas fa-address-book"></i></span>
-							</div>
-							<input type="text" placeholder="Nome" class="form-control"/>
-            </div>
-            
-            <div class="input-group mt-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text br-15"><i class="fas fa-exclamation-triangle"></i></span>
-							</div>
-							<input type="email" placeholder="Classificação de risco" class="form-control"/>
-						</div>
+<ion-content menu="first">
+	<div class="wrapper fadeInDown">
+		<div id="formContent">
+			<div>
+				<div class="card-header">
+					<div class="text-white" class="d-flex justify-content-center" class="fadeIn first">
+						<h4>Fila de atendimento - Classificação de cores </h4>
 
-						<div class="input-group mt-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text br-15"><i class="fas fa-user-clock"></i></span>
-							</div>
-							<input type="text" placeholder="Posição para atendimento" class="form-control"/>
-						</div>
-				
+
 					</div>
+				</div>
+				<div>&nbsp;</div>
+				<form>
+
+					<div>&nbsp;</div>
+					<fieldset>
+						<legend id="ver">&nbsp;&nbsp;&nbsp;&nbsp;</legend>
+
+						<div>&nbsp;</div>
+
+						<div class="btn-group" role="group" aria-label="Basic example">
+					<!-- 	<ion-badge style="--background:linear-gradient(to right,Red, IndianRed);--padding-end:30px;--padding-start:30px;font-size: 15px;"><h4>Nº: 66</h4></ion-badge>--> 
+							<h4>Nome: Bruno &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i>				
+						</div>
+						
+					</fieldset>
+
+
+					<div>&nbsp;</div>
+					<fieldset>
+						<legend id="lar">&nbsp;&nbsp;&nbsp;&nbsp;</legend>
+
+						<div>&nbsp;</div>
+
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<h4>Nome: Bruno &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i>
+						</div>
+					</fieldset>
+
+
+					<div>&nbsp;</div>
+					<fieldset>
+						<legend id="ama">&nbsp;&nbsp;&nbsp;&nbsp;</legend>
+
+						<div>&nbsp;</div>
+
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<h4>Nome: Bruno &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i>
+						</div>
+					</fieldset>
+
+
+					<div>&nbsp;</div>
+
+					<fieldset>
+						<legend id="verd">&nbsp;&nbsp;&nbsp;&nbsp;</legend>
+
+						<div>&nbsp;</div>
+
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<h4>Nome: Bruno &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i> 
+						</div>
+					</fieldset>
+
+					<div>&nbsp;</div>
+					<div id="formFooter" class="fadeIn fourth">
+						&nbsp;&nbsp;
+						<button type="button" class="btn btn-outline-warning btn finalizar_btn"> Finalizar
+						</button>&nbsp;&nbsp;
+						<button class="btn btn-outline-danger btn finalizar_btn" type="reset">limpar</button>
+					</div>
+					
 				</form>
-      </div>
-      
-			<div class="card-footer">
-        
-        <a class="btn btn-secondary btn-sm" id="add_more"><i class="fas fa-plus-circle"></i> Mais</a>
-        
-        <a class="btn btn-secondary btn-sm" id="remove_more"><i class="fas fa-trash-alt"></i> Remove</a>
-        
-				<button class="btn btn-success btn-sm float-right voltar_btn"><i class="fas fa-arrow-alt-circle-right"></i> Voltar</button>
-      
-      </div>
+			</div>
 		</div>
 	</div>
-	</dvi>
+</ion-content>

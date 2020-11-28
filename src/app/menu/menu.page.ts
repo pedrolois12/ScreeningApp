@@ -6,7 +6,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./style.css'],
 })
 export class MenuPage implements OnInit {
-
+  navigate : any;
   constructor(public router: Router) { }
 
   ngOnInit() {

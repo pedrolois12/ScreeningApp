@@ -1,25 +1,50 @@
+<ion-menu side="start" menuId="first" contentId="content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="content">
+    <ion-list>
+      <ion-item><ion-icon name="lock-closed-outline"></ion-icon><div>&nbsp;</div>Login Enfermeiroᵃ Chefe</ion-item>
+      <ion-item><ion-icon name="list-outline"></ion-icon><div>&nbsp;</div>Menu</ion-item>
+      <ion-item><ion-icon name="medkit-outline"></ion-icon><div>&nbsp;</div>Triagem</ion-item>
+      <ion-item><ion-icon name="document-text-outline"></ion-icon><div>&nbsp;</div>Historico</ion-item>
+      <ion-item><ion-icon name="people-outline"></ion-icon><div>&nbsp;</div>Fila</ion-item>
+      <ion-item><ion-icon name="log-out-outline"></ion-icon><div>&nbsp;</div>Sair</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
 <ion-header>
   <ion-toolbar>
-    <ion-title>modalOne</ion-title>
+    <p>Marque as opções do quadro do Paciente</p>
     <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()" >fechar</ion-button>
+      <div (click)="dismissModal()"><i class="fas fa-door-open ani-heartbeat fa-lg "></i></div>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content menu="first">
+ 
+  
+  <div class="container">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <div class="row align-items-start">
+          <div class="column">
+            <div class="list-group">
+              <button type="button" class="list-group-item list-group-item-action active">
+                Quadro de sintomas
+              </button>
 
-  <div class="row align-items-start">
-    <div class="column">
-      <div class="list-group">
-        <button type="button" class="list-group-item list-group-item-action active">
-          Quadro de sintomas
-        </button>
-
-        <button type="button" class="list-group-item list-group-item-light" *ngFor="let sintoma of lista_sintoma"
-          value={{sintoma.sintoma}} (click)="mostra_valor(sintoma.sintoma)" id="butoes"> {{sintoma.desc_sintoma}} </button>
+              <button type="button" class="list-group-item list-group-item-light" *ngFor="let sintoma of lista_sintoma"
+                value={{sintoma.sintoma}} (click)="mostra_valor(sintoma.sintoma)" id="butoes"> {{sintoma.desc_sintoma}}
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
 </ion-content>

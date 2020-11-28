@@ -1,30 +1,39 @@
+<ion-content  menu="first">
+</ion-content>
+
 <div class="container">
   <div class="d-flex justify-content-center h-100">
     <div class="card">
-     
-      <div class="text-white"  class="d-flex justify-content-center" >
-        <div class="card-header">
-            <h4>Triagem</h4>       
-        </div>
+      <div>&nbsp;</div>
+      <div class="text-white" class="d-flex justify-content-center" class="fadeIn first" id="bor">
+        <h4>Triagem </h4>
       </div>
 
       <div class="card-body">
+        <fieldset>
+          <legend><b>Dados do paciente: </b></legend>
+          <div>&nbsp;</div>
 
-        <div class="input-group mb-3">
+          <div class="input-group mb-3">
+            <input type="text" id="nome" class="fadeIn first" name="nome" placeholder="Nome" />
+            <input type="text" id="sobrenome" class="fadeIn first" name="sobrenome" placeholder="sobrenome" />
+            <input type="text" id="Cpf" class="fadeIn first" name="cpf" placeholder="Cpf ou Rg" />
+          </div>
+        </fieldset>
+        <div>&nbsp;</div>
 
-          <input type="text" id="nome" class="fadeIn first" name="nome" placeholder="Nome" />
-          <input type="text" id="sobrenome" class="fadeIn first" name="sobrenome" placeholder="sobrenome" />
+        <fieldset>
 
-        </div>
-
-        <div class="input-group mb-3">
-         
-          <select (change)="escolhe_fluxo()" [(ngModel)] ="selecionar" class="custom-select mr-sm-2" id="inlineFormCustomSelect" id="sele" placeholder="Escolha o Fluxo">
-            <option *ngFor= "let fluxo of this.lista_fluxo" value="{{fluxo.nome}}">{{fluxo.nome}}</option> 
-          </select>
-        </div>
+          <legend><b>Escolha o fluxo: </b></legend>
+          <div class="input-group mb-3">
+            <div>&nbsp;</div>
+            <select (change)="escolhe_fluxo()" [(ngModel)]="selecionar" class="custom-select mr-sm-2"
+              id="inlineFormCustomSelect" id="sele" placeholder="Escolha o Fluxo">
+              <option *ngFor="let fluxo of this.lista_fluxo" value="{{fluxo.nome}}">{{fluxo.nome}}</option>
+            </select>
+          </div>
+        </fieldset>
       </div>
-
     </div>
   </div>
 </div>

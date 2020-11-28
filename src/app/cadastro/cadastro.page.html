@@ -1,3 +1,6 @@
+<ion-content  menu="first">
+</ion-content>
+
 <div class="wrapper fadeInDown">
   <div id="formContent">
 
@@ -11,7 +14,7 @@
 
       <input type="text" id="Coren" [(ngModel)] ="coren"  
         title ="Coren deve seguir o padrão = XXXXX-TE / XXXXX-ENF /XXXXX-AE" 
-        class="fadeIn second" name="Coren" placeholder="XXXXX-(TE/ENF/AE)" 
+        class="fadeIn second" name="Coren" placeholder="Coren" 
         (change) ="mascara_coren()" pattern="([A-Z]|[0-9]){5}-(TE|ENF|AE)" required/>
       <input type="number" id="Idade" class="fadeIn second" name="Idade" placeholder="Idade" />
 

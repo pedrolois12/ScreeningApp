@@ -45,6 +45,22 @@ const routes: Routes = [
     path: 'modal-one',
     loadChildren: () => import('./modal-one/modal-one.module').then( m => m.ModalOnePageModule)
   },
+  {
+    path: 'modalt',
+    loadChildren: () => import('./modalt/modalt.module').then( m => m.ModaltPageModule)
+  },
+  {
+    path: 'menuchefe',
+    loadChildren: () => import('./menuchefe/menuchefe.module').then( m => m.MenuchefePageModule)
+  },
+  {
+    path: 'consultachefe',
+    loadChildren: () => import('./consultachefe/consultachefe.module').then( m => m.ConsultachefePageModule)
+  },
+  {
+    path: 'menu-example',
+    loadChildren: () => import('./menu-example/menu-example.module').then( m => m.MenuExamplePageModule)
+  },
 ];
 
 @NgModule({

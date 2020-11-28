@@ -1,36 +1,77 @@
-<ion-content>
 
 
-  <div class="container">
-    <div class="row">
-      <div class="column">
-        <label> </label>
-        <br>
-        <ion-button expand="block" (click)="showModal()" >Sintomas escolhidos</ion-button>   
-      </div>
+<ion-content  menu="first">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div>
+        <div class="card-header">
+          <div class="text-white" class="d-flex justify-content-center" class="fadeIn first">
+            <h4>Fluxo de {{this.fluxo}} </h4>
 
-    </div>
-    <div class="wrapper fadeInDown">
-      <div id="formContent">
-        
-        <div class="row">
-          <div class="column">
-            <label>Escala de 0 a 10 qual a dor o paciente está sentido </label>
+
+          </div>
+        </div>
+        <div>&nbsp;</div>
+        <form>
+          <fieldset>
+            <legend>Marque o nivel de dor de 0 a 10</legend>
+            <div>&nbsp;</div>
+            <div class="btn-group-sm" role="group" aria-label="Basic example">
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butver">0</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butver">1</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butver">2</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butver">3</button>
+
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butama">4</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butama">5</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butlar">6</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butlar">7</button>
+
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butlar">8</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butverm">9</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" id="butverm">10</button>
+            </div>
+          </fieldset>
+
+          <div>&nbsp;</div>
+          <fieldset>
+            <legend>Sintomas: </legend>
+
+            <div>&nbsp;</div>
+
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" name="escala_dor" class="btn btn-secondary"
-                *ngFor="let escala_dor of this.lista_dor" value={{escala_dor.intensidade}}>
-                {{escala_dor.num_escala}}</button>
+              <button type="button" class="btn btn-primary btn-sm selecione_btn" expand="block"
+                (click)="showModal()">Selecione
+                os Sintomas: </button>
             </div>
 
+            <div>&nbsp;</div>
+
+            <div id="exibir" class="d-flex justify-content-center" rows="5" cols="20">
+              <h5>{{this.recupera_sintoma}}</h5>
+            </div>
+
+            <div>&nbsp;</div>
+          </fieldset>
+
+          <div>&nbsp;</div>
+
+          <fieldset>
+            <legend>Observações importantes:</legend>
+            <div>&nbsp;</div>
+
+            <textarea id="story" name="story" rows="5" cols="33">
+             </textarea>
+
+          </fieldset>
+          <div>&nbsp;</div>
+          <div id="formFooter" class="fadeIn fourth">
+            &nbsp;&nbsp;
+            <button type="button" class="btn btn-outline-warning btn finalizar_btn"> Finalizar </button>&nbsp;&nbsp;
+            <button class="btn btn-outline-danger btn finalizar_btn" type="reset">limpar</button>
           </div>
-        </div>
-        <div class="row">
-          <div class="column">
-            <button type="button" class="btn-success"> Triar! </button>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
-
 </ion-content>

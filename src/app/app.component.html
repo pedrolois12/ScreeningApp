@@ -1,4 +1,38 @@
-<ion-app> 
-  <ion-router-outlet>
-  </ion-router-outlet>
+<ion-app>
+  <ion-menu side="start" menuId="first" content-id="content">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item routerLink="/modalt">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <div>&nbsp;</div>Login Enfermeiroᵃ Chefe
+        </ion-item>
+        <ion-item routerLink="/menu"> 
+          <ion-icon name="list-outline"></ion-icon>
+          <div>&nbsp;</div>Menu
+        </ion-item>
+        <ion-item routerLink="/triagem">
+          <ion-icon name="medkit-outline"></ion-icon>
+          <div>&nbsp;</div>Triagem
+        </ion-item>
+        <ion-item routerLink="/historico">
+          <ion-icon name="document-text-outline"></ion-icon>
+          <div>&nbsp;</div>Historico
+        </ion-item>
+        <ion-item routerLink="/fila">
+          <ion-icon name="people-outline"></ion-icon>
+          <div>&nbsp;</div>Fila
+        </ion-item>
+        <ion-item routerLink="/Login">
+          <ion-icon name="log-out-outline"></ion-icon>
+          <div>&nbsp;</div>Sair
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="content"></ion-router-outlet>
 </ion-app>

@@ -152,9 +152,11 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
   }
 
 
-async showModal() {
+async showModal() { 
     const modal = await this.modalCtrl.create({
+      animated:true,
       component: ModalOnePage,
+      cssClass: 'my-custom-modal-css',
       componentProps:{
         'fluxo': this.fluxo
       }

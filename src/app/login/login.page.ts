@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from '../autenticacao.service';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-
+import { ModaltPage } from '../modalt/modalt.page';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,9 @@ export class LoginPage implements OnInit {
   constructor(
     public autenticacaoService: AutenticacaoService,
     public router: Router,
+    public modalController: ModalController,
     public ToastController: ToastController,
+
   ) { }
 
   ngOnInit() {
@@ -55,6 +58,17 @@ export class LoginPage implements OnInit {
     });
     toast.present();
   }
-
   
+  async shoModal() { 
+    const modal = await this.modalController.create({
+      animated:true,
+      component: ModaltPage,
+      cssClass: 'my-custom-modal-css',
+      
+      
+    });
+  modal.present();  
+
+let data = (await modal.onWillDismiss());
+}
 }
