@@ -12,6 +12,9 @@ export class CadastroPage implements OnInit {
   public coren ="";
   public primeira_vez=true;
   public mensagem="";
+  public senha="";
+  public senhaconfir="";
+
   ngOnInit() {
   }
   
@@ -44,7 +47,6 @@ export class CadastroPage implements OnInit {
 
   }
 
-  
   async exibeMensagem(){  
     const toast = await this.ToastController.create({
       message:this.mensagem,
@@ -52,4 +54,9 @@ export class CadastroPage implements OnInit {
     });
     toast.present();
   }
+
+  
 }
+
+
+
