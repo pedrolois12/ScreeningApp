@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from '../autenticacao.service';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, MenuController } from '@ionic/angular';
 import { ModaltPage } from '../modalt/modalt.page';
 import { ModalController } from '@ionic/angular';
-
+import {ScreeningServiceService} from '../screening-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -17,10 +17,13 @@ export class LoginPage implements OnInit {
     public router: Router,
     public modalController: ModalController,
     public ToastController: ToastController,
+    public menuCtrl: MenuController,
+    public ScrenningServ : ScreeningServiceService
 
   ) { }
 
   ngOnInit() {
+    this.menuCtrl.enable(false);
   }
 
  
@@ -28,26 +31,62 @@ export class LoginPage implements OnInit {
   public senha:string="";
   public mensagem:string="";
 
-  insereUsuario(){
-    this.autenticacaoService.loginNoFireBase(this.email, this.senha)
-    .then((res)=>{
-        this.router.navigate(['/menu']).then(nav => {
-          window.location.reload();
-    });;
+  insereUsuario() {
+    let tem_arroba;
 
-    
-  
-    })
-    .catch((error)=>{
-      this.mensagem="Erro Logar!"
-      this.exibeMensagem();
-    }) 
+    for (let i = 0; i < this.email.length; i++) {
+      if (this.email.charAt(i) == "@") {
+        tem_arroba = true;
+        console.log(this.email.charAt(i))
+      }
+    }
+
+    if (tem_arroba) {
+      this.autenticacaoService.loginNoFireBase(this.email, this.senha)
+        .then((res) => {
+          this.router.navigate(['/menu'], {queryParams:{email:this.email}})
+
+        })
+        .catch((error) => {
+          let mensagem_erro;
+          if (error.code == "auth/wrong-password") {
+            mensagem_erro = "email e/ou senha errado!";
+          }
+          this.mensagem = "Erro ao Logar! -" + mensagem_erro
+          console.log(error);
+          this.exibeMensagem();
+        })
+    }else{
+        let enfermeiro ={login:this.email, senha:this.senha};
+        this.ScrenningServ.validaLoginEnfermeiro(enfermeiro).subscribe(
+          data=>{
+              let valida = new Array<any>();
+              valida = valida.concat(data);
+              console.log(valida);
+              let aux = String(valida[0].status)
+              let aux1 = valida[0].dados[0];
+              console.log(aux1.nome+"-"+aux1.id)
+              if(aux =="true"){
+                this.router.navigate(['/menu'], {queryParams:{email:aux1.nome, id:aux1.id}});
+                
+              }
+
+              else{
+                let mensagem_erro;
+                mensagem_erro = "email e/ou senha errado!";
+                this.mensagem = "Erro ao Logar! -" + mensagem_erro
+                this.exibeMensagem();
+              }
+          }
+        )
+    }
+
   }
 
   cadastro(){
-    this.router.navigate(['/cadastro']).then(nav => {
-      window.location.reload();
-      console.log(nav);
+    this.router.navigate(['/modalt']).then(nav => {
+     // window.location.reload();
+      //console.log(nav);
     });
   }
 

@@ -14,6 +14,7 @@ import { ScreeningServiceService} from '../screening-service.service';
 export class TriagemPage implements OnInit {
   public  nome="";
   public  cpf="";
+  public sobrenome=""
   public selecionar;
   public lista_fluxo =new Array<any>();
 
@@ -26,10 +27,16 @@ export class TriagemPage implements OnInit {
      
 ) { }
 
-
+  private nome_enfermeiro;
+  private id;
   ngOnInit() {
     this.resgataFluxo();
-
+    this.actRoute.queryParams.subscribe(
+      data=>{
+        this.nome_enfermeiro = data.nome_enfermeiro;
+        this.id = data.id;
+      }
+    )
   }
 
   resgataFluxo(){
@@ -55,8 +62,7 @@ export class TriagemPage implements OnInit {
     console.log(this.selecionar);
     if(this.selecionar){
     
-      this.route.navigate(["./dorabdominal"], {queryParams: {nome:this.nome, cpf:this.cpf, fluxo:this.selecionar} } ).then(nav=>{
-         window.location.reload();
+      this.route.navigate(["./dorabdominal"], {queryParams: {nome:this.nome+" "+this.sobrenome, cpf:this.cpf, fluxo:this.selecionar, nome_enfermeiro:this.nome_enfermeiro, id:this.id} } ).then(nav=>{
         
       });
 

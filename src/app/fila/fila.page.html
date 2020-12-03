@@ -21,7 +21,7 @@
 
 						<div class="btn-group" role="group" aria-label="Basic example">
 					<!-- 	<ion-badge style="--background:linear-gradient(to right,Red, IndianRed);--padding-end:30px;--padding-start:30px;font-size: 15px;"><h4>Nº: 66</h4></ion-badge>--> 
-							<h4>Nome: Bruno &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i>				
+							<h4 *ngFor="let verde of this.fila_verde">{{this.verde.nome}} &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i>				
 						</div>
 						
 					</fieldset>
@@ -34,7 +34,7 @@
 						<div>&nbsp;</div>
 
 						<div class="btn-group" role="group" aria-label="Basic example">
-							<h4>Nome: Bruno &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i>
+							<h4 *ngFor="let amarelo of this.fila_amarelo">{{this.amarelo.nome}} &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i>
 						</div>
 					</fieldset>
 
@@ -45,24 +45,21 @@
 
 						<div>&nbsp;</div>
 
-						<div class="btn-group" role="group" aria-label="Basic example">
-							<h4>Nome: Bruno &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i>
+						<div class="list-group" role="group" aria-label="Basic example">
+					      <button class="list-group-item list-group-item-action active" *ngFor="let vermelho of this.fila_vermelha"><i class="fas fa-edit fa-lg"></i> <i class="fas fa-user-times fa-lg"></i> {{this.vermelho.nome}} </button>
 						</div>
 					</fieldset>
-
-
 					<div>&nbsp;</div>
-
 					<fieldset>
 						<legend id="verd">&nbsp;&nbsp;&nbsp;&nbsp;</legend>
 
 						<div>&nbsp;</div>
 
 						<div class="btn-group" role="group" aria-label="Basic example">
-							<h4>Nome: Bruno &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i> 
+							<h4 *ngFor="let laranja of this.fila">{{this.laranja.nome}} &nbsp;&nbsp; </h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i> 
 						</div>
-					</fieldset>
 
+					</fieldset>
 					<div>&nbsp;</div>
 					<div id="formFooter" class="fadeIn fourth">
 						&nbsp;&nbsp;

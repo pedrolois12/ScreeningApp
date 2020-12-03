@@ -17,19 +17,19 @@
             <legend>Marque o nivel de dor de 0 a 10</legend>
             <div>&nbsp;</div>
             <div class="btn-group-sm" role="group" aria-label="Basic example">
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butver">0</button>
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butver">1</button>
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butver">2</button>
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butver">3</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(0,verde)" id="butver">0</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(1,verde)" id="butver">1</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(2,verde)" id="butver">2</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(3,verde)" id="butver">3</button>
 
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butama">4</button>
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butama">5</button>
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butlar">6</button>
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butlar">7</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(4,amarelo)" id="butama">4</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(5,amarelo)" id="butama">5</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(6,laranja)" id="butlar">6</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(7,laranja)" id="butlar">7</button>
 
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butlar">8</button>
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butverm">9</button>
-              <button type="button" name="escala_dor" class="btn btn-secondary" id="butverm">10</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(8,laranja)" id="butlar">8</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(9,vermelho)" id="butverm">9</button>
+              <button type="button" name="escala_dor" class="btn btn-secondary" (click)="resgata_dor(10,vermelho)" id="butverm">10</button>
             </div>
           </fieldset>
 
@@ -60,14 +60,14 @@
             <legend>Observações importantes:</legend>
             <div>&nbsp;</div>
 
-            <textarea id="story" name="story" rows="5" cols="33">
+            <textarea [(ngModel)]="observacoes" id="story" name="story" rows="5" cols="33">
              </textarea>
 
           </fieldset>
           <div>&nbsp;</div>
           <div id="formFooter" class="fadeIn fourth">
             &nbsp;&nbsp;
-            <button type="button" class="btn btn-outline-warning btn finalizar_btn"> Finalizar </button>&nbsp;&nbsp;
+            <button type="button" (click)="getData()" class="btn btn-outline-warning btn finalizar_btn"> Finalizar </button>&nbsp;&nbsp;
             <button class="btn btn-outline-danger btn finalizar_btn" type="reset">limpar</button>
           </div>
         </form>

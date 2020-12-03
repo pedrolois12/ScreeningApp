@@ -14,7 +14,7 @@
     </div>
     
 
-    <table class="table">
+    <table class="table table-responsive-sm">
 
       <thead>
       
@@ -29,17 +29,17 @@
         <tr>
           <th scope="col" id="bor">Nome:</th>
           <th scope="col" id="bor">Cpf:</th>
-          <th scope="col" id="bor">Classificação:</th>
           <th scope="col" id="bor">Data:</th>
+          <!--  <th scope="col" id="bor">Descrição ultimo atendimento:</th>-->
         </tr>
       </thead>
 
       <tbody>
-        <tr>
-          <td>Bruno</td>
-          <td>000.000.000-00</td>
-          <td>Vermelha</td>
-          <td>02/02/20</td>
+        <tr *ngFor ="let pacientes of this.paciente">
+          <td>{{this.pacientes.nome}}</td>
+          <td>{{this.pacientes.cpf_rng}}</td>
+          <td>{{this.pacientes.data_ultima_entrada}}</td>
+        <!--  <td style="white-space: pre;">{{this.pacientes.descricao_atendimento | ql}}</td>-->
         </tr>
       
       </tbody>

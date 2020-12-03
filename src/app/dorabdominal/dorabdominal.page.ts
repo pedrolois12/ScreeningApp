@@ -2,7 +2,7 @@ import { Component, Input, OnInit, AfterViewInit, OnChanges } from '@angular/cor
 import { concat, fromEventPattern } from 'rxjs';
 import { ScreeningServiceService } from '../screening-service.service';
 import { HttpClientModule, HttpHeaders, HttpParams } from '@angular/common/http';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, MenuController } from '@ionic/angular';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { ModalOnePage } from '../modal-one/modal-one.page';
 
@@ -14,9 +14,10 @@ import { ModalOnePage } from '../modal-one/modal-one.page';
 export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
 
   constructor(public http: HttpClientModule, public screeningServ: ScreeningServiceService, public navCtrl: NavController,
-    public route: Router, public actRoute: ActivatedRoute, public modalCtrl:ModalController
+    public route: Router, public actRoute: ActivatedRoute, public modalCtrl:ModalController, public menuCtrl:MenuController
 
   ) { }
+  public observacoes;
   public sintoma;
   public selecao;
   public nome;
@@ -24,16 +25,15 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
   public lista_sintoma = new Array<any>();
   public lista_dor = new Array<any>();
 
-  public flag_vermelho: boolean;
-  public flag_amarelo: boolean;
-  public flag_laranja: boolean;
-  public flag_verde: boolean;
-  public flag_azul: boolean;
   public data;
   public fluxo;
   public pega_modal;
   public recupera_sintoma = " ";
-
+  public nivel_dor;
+  public cor_dor;
+  public recupera_flag;
+  private nome_enfermeiro;
+  private id;
 
 
   ngOnChanges() {
@@ -45,18 +45,24 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
 
   ngOnInit() {
     this.carregaPagina();
-
-
+    this.menuCtrl.enable(true);
   }
 
 
   carregaPagina() {
 
     let params;
+
     this.actRoute.queryParams.subscribe(data => {
       params = data;
     });
+
     this.fluxo = params.fluxo;
+    this.nome = params.nome;
+    this.cpf = params.cpf;
+    console.log(params.cpf+"-"+this.cpf)
+    this.nome_enfermeiro = params.nome_enfermeiro;
+    this.id = params.id;
 
     this.screeningServ.getFluxo(params.fluxo).subscribe(
       data => {
@@ -81,18 +87,39 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
   }
 
   getData() {
-    let color;
-    let flag;
-
+    let color= "";
     let params;
     this.actRoute.queryParams.subscribe(data => {
       params = data;
     });
 
+    if(this.recupera_flag =="VERMLEHO"){
+      color = "Crimson";
+    }
+    if(this.recupera_flag =="LARANJA"){
+      color = "DarkOrange";
+    }
 
-    let msg = "<h4> Paciente: " + params.nome + "</h4> <br> portando o CPF:" + params.cpf + "<br> <h4 style='color:" + color + ";'> Foi classificado com a cor: " + flag + "</h4>" +
-      "Com os sintomas: <h4>" + this.recupera_sintoma + "</h4>";
+    if(this.recupera_flag =="AMARELO"){
+      color = "Gold";
+    }
+    if(this.recupera_flag =="VERDE"){
+      color = "DarkGreen";
+    }
+    if(this.recupera_flag =="AZUL"){
+      color = "DodgerBlue";
+    }
+    let desc_dor;
+    if(this.recupera_flag == ""){
+        this.recupera_flag ="verde";
+    }
+    for(let i =0; i< this.lista_dor.length;i++){
+      if(this.nivel_dor == this.lista_dor[i].num_escala){
+         desc_dor = this.lista_dor[i].intensidade;
+      }
+    }
 
+    let msg = "<h4> Fluxo escolhido: " + this.fluxo + "</h4>"+"<h4> Paciente: " + params.nome + "</h4>"+"<br> portando o CPF:" + params.cpf +"<br> <h4 style='background-color:" + color + "'> Foi classificado com a cor:"+this.recupera_flag     +"<h4> Com os sintomas: </h4>" + this.recupera_sintoma     +"<h4> Com intensidade de dor: </h4>" + desc_dor + " "  +"<h4> Com as observações do enfermeiro:"+this.nome_enfermeiro+" </h4>" + this.observacoes + "";
     let paciente = {
       from: "triagem.service2020@gmail.com",
       to: "triagem.service2020@gmail.com",
@@ -100,55 +127,41 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
       html: msg
     }
 
-    let pac = JSON.stringify(paciente);
-    console.log(pac);
-    this.screeningServ.enviaEmail(pac).subscribe(data => {
+    console.log(paciente);
+    this.screeningServ.enviaEmail(paciente).subscribe(data => {
       console.log(data);
     });
-  }
 
-  mostra_valor(valor: string) {
-    var botoes = document.getElementsByTagName("button");
-    var aux = "";
+    let fila = {nome:this.nome  
+               ,flag:this.recupera_flag
+               ,cpf_rg: this.cpf
+               ,atendido:false}
 
-    for (var i = 0; i < botoes.length; i++) {
-      if (botoes[i].value == valor) {
-        console.log(botoes[i].value + valor)
-        botoes[i].disabled = true;
-        botoes[i].style.backgroundColor = "gray";
-        for (var j = 0; j < this.lista_sintoma.length; j++) {
-          if (valor == this.lista_sintoma[j].sintoma) {
-            aux = this.lista_sintoma[j].desc_sintoma;
-            this.recupera_sintoma += " " + aux + ",";
-            if (this.lista_sintoma[j].flag == "vermelho") {
-              this.flag_vermelho = true;
-            } else if (this.lista_sintoma[j].flag == "amarelo") {
-              this.flag_amarelo = true;
-            } else if (this.lista_sintoma[j].flag == "laranja") {
-              this.flag_laranja = true;
-            } else if (this.lista_sintoma[j].flag == "verde") {
-              this.flag_verde = true;
-            } else if (this.lista_sintoma[j].flag == "azul") {
-              this.flag_azul = true;
-            }
-            break;
-          }
-        }
-        break;
+    this.screeningServ.inserePaciente(fila).subscribe(
+      data =>{
+        console.log(data);
       }
-    }
-  }
+    )
 
-  escala_dor_cor() {
-    let dor = document.getElementsByTagName("button");
-    for (var i = 0; i < dor.length; i++) {
-      console.log(dor[i].value + i)
-    if (dor[i].value == "Sem dor") {
-        dor[i].style.backgroundColor = "#99ff66"
+    let descricao =this.recupera_sintoma +" , "+this.observacoes;
+    console.log(this.cpf);
+    console.log(descricao)
+
+    let paci = {
+      nome:this.nome,
+      cpf_rng:this.cpf,
+      descricao_atendimento:descricao,
+      enfermeiro_id: this.id
+    }
+    console.log(paci);
+    this.screeningServ.inserirPaciente(paci).subscribe(
+      data =>{
+        console.log(data);
+      },
+      error=>{
+        console.log(error);
       }
-
-    }
-
+    )
   }
 
 
@@ -167,6 +180,7 @@ async showModal() {
 let data = (await modal.onWillDismiss());
 console.log(data.data.flag);
 console.log(data.data.sintomas);
+this.recupera_flag =data.data.flag;
 
 for(let i = 0; i <= data.data.sintomas.length-1; i++){
     if(i == 0){
@@ -175,14 +189,13 @@ for(let i = 0; i <= data.data.sintomas.length-1; i++){
     else {
       this.recupera_sintoma +=","+data.data.sintomas[i];
     }
-   
-
 }
 console.log(this.recupera_sintoma);
-
-
 }
 
-
+resgata_dor(nivel:number, cor:String){
+    this.nivel_dor = nivel;
+    this.cor_dor = cor;
+}
 
 }

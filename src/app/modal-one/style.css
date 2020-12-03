@@ -1,0 +1,19 @@
+.my-custom{
+   --height:60% !important;
+    position:absolute;
+    display:block;
+}
+
+ion-modal{
+    --height:60%;
+    --width:50%;
+    
+}
+
+ion-content{
+    --height:80%;
+}
+
+.sc-ion-modal-md-h{
+    --height:90% !important;
+}

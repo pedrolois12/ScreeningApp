@@ -4,7 +4,51 @@
 <div class="wrapper">
   <div id="formContent">
 
+    <ng-template #modalngx let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Exclusão de enfermeiro</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label>Tem certeza que deseja prosseguir com a exclusão?</label>
+        <label>{{this.nome_enfermeiro}} </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close();exluir_enfermeiro();">Confirmar</button>
+      </div>
+    </ng-template>
 
+    <ng-template #modalalterar let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Alterar enfermeiro</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <label>Alterar dados do enfermeiro: {{this.nome_enfermeiro}}</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend" style="height: 30px; width: auto;">
+            <span class="input-group-text" id="basic-addon1"> <ion-icon name="chatbubbles-outline"></ion-icon></span>
+          </div>
+          <input type="text" class="form-control" style="height: 30px; width: auto; margin:0px; " [(ngModel)]="email" placeholder="email" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend" style="height: 30px; width: auto;">
+            <span class="input-group-text" id="basic-addon1"> <ion-icon name="person-circle-outline"></ion-icon></span>
+          </div>
+          <input type="text" class="form-control" style="height: 30px; width: auto; margin:0px; " [(ngModel)]="login" placeholder="login" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="alert alert-primary">Ultima atualização:  {{this.updatedAt | date:"dd/MM/yyyy HH:mm"}} </div> 
+      </div>
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close();alterar_enfermeiro()">Alterar</button>
+      </div>
+    </ng-template>
 
     <div class="card-header">
       <div class="text-white" class="d-flex justify-content-center" class="fadeIn first">
@@ -34,15 +78,16 @@
       </thead>
 
       <tbody>
-        <tr>
-          <td>EnfBruno</td>
-          <td>Bruno</td>
-          <td><i class="fas fa-edit fa-lg"></i></td>
-          <td><i class="fas fa-user-times fa-lg"></i></td>
+        <tr *ngFor="let enfermeiro of this.enfermeiros">
+          <td>{{enfermeiro.login}}</td>
+          <td>{{enfermeiro.nome}}</td>
+          <td><button name="alterar" value="{{enfermeiro.id}}" (click)="abre_modal(modalalterar);resgata_id(enfermeiro.id)"style="background: none;"><i class="fas fa-edit fa-lg"></i></button></td>
+          <td><button name="excluir" value="{{enfermeiro.id}}" (click)="abre_modal(modalngx);resgata_id(enfermeiro.id)" style="background: none;"><i class="fas fa-user-times fa-lg"></i></button></td>
         </tr>
       
       </tbody>
     </table>
 
   </div>
+  
 </div>

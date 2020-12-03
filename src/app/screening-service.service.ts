@@ -49,4 +49,52 @@ export class ScreeningServiceService {
     return this.http.get(sintomas, this.httpOption);
   }
 
+  validaLogin(usuario:any){
+    let sintomas =this.url+"validaLogin";
+    return this.http.post(sintomas, usuario, this.httpOption);
+  }
+
+  incluiEnfermeiro(enfermeiro:any){
+    let sintomas = this.url+"incluiEnfermeiro"
+    return this.http.post(sintomas, enfermeiro, this.httpOption);
+  }
+
+  getEnfermeiro(){
+    let sintomas = this.url+"getEnfermeiro";
+    return this.http.get(sintomas, this.httpOption);
+  }
+ 
+  excluirEnfermeiro(enfermeiro:any){
+    let sintomas = this.url+"excluirEnfermeiro"
+    return this.http.post(sintomas, enfermeiro, this.httpOption);
+  }
+  alterarEnfermeiro(enfermeiro:any){
+    let sintomas = this.url+"alterarEnfermeiro"
+    return this.http.post(sintomas, enfermeiro, this.httpOption);
+  }
+
+
+  validaLoginEnfermeiro(usuario:any){
+    let sintomas =this.url+"validaLoginEnfermeiro";
+    return this.http.post(sintomas, usuario, this.httpOption);
+  }
+
+  inserirPaciente(paciente:any){
+    let sintomas =this.url+"inserePaciente";
+    return this.http.post(sintomas, paciente, this.httpOption);
+    
+  }
+
+  getPacientes(){
+    let sintomas =this.url+"getPacientes";
+    return this.http.get(sintomas, this.httpOption);
+    
+  }
+
+  getFila(){
+    let sintomas =this.url+"getFilaPacientes";
+    return this.http.get(sintomas, this.httpOption);
+    
+  }
+
 }

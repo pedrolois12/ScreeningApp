@@ -1,4 +1,8 @@
 <ion-app>
+  <ion-fab slot="fixed">
+    <ion-fab-button (click)="abrir_side_menu()" color="dark" style="--border-radius: 0px;" size="small"><ion-icon name="menu-outline"></ion-icon></ion-fab-button>
+  </ion-fab>
+
   <ion-menu side="start" menuId="first" content-id="content">
     <ion-header>
       <ion-toolbar color="primary">
@@ -7,27 +11,27 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item routerLink="/modalt">
+        <ion-item (click)="fechar_side_menu()" routerLink="/modalt">
           <ion-icon name="lock-closed-outline"></ion-icon>
-          <div>&nbsp;</div>Login Enfermeiroᵃ Chefe
+          <div>&nbsp;</div>Login Enfermeiro(a) Chefe
         </ion-item>
-        <ion-item routerLink="/menu"> 
+        <ion-item (click)="fechar_side_menu()" routerLink="/menu"> 
           <ion-icon name="list-outline"></ion-icon>
           <div>&nbsp;</div>Menu
         </ion-item>
-        <ion-item routerLink="/triagem">
+        <ion-item  (click)="fechar_side_menu()" routerLink="/triagem">
           <ion-icon name="medkit-outline"></ion-icon>
           <div>&nbsp;</div>Triagem
         </ion-item>
-        <ion-item routerLink="/historico">
+        <ion-item (click)="fechar_side_menu()" routerLink="/historico">
           <ion-icon name="document-text-outline"></ion-icon>
           <div>&nbsp;</div>Historico
         </ion-item>
-        <ion-item routerLink="/fila">
+        <ion-item (click)="fechar_side_menu()" routerLink="/fila">
           <ion-icon name="people-outline"></ion-icon>
           <div>&nbsp;</div>Fila
         </ion-item>
-        <ion-item routerLink="/Login">
+        <ion-item (click)="fechar_side_menu()" routerLink="/login">
           <ion-icon name="log-out-outline"></ion-icon>
           <div>&nbsp;</div>Sair
         </ion-item>

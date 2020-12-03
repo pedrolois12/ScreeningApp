@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -12,18 +12,21 @@ import { AngularFireModule} from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { FontAwesomeModule } from '@fortawesome/fontawesome-free/webfonts';
-
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule
+  imports: [BrowserModule,
+     IonicModule.forRoot(),
+      AppRoutingModule
   , AngularFireModule.initializeApp(environment.firebaseConfig),
   AngularFireAuthModule,
   HttpClientModule,
-  //FontAwesomeModule
+  NgbModule
+  
   ],
   providers: [
     StatusBar,

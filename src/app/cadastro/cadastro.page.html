@@ -9,8 +9,8 @@
     </div>
 
       <form>
-      <input type="text" id="nome" class="fadeIn first" name="nome" placeholder="Nome" />
-      <input type="text" id="sobrenome" class="fadeIn first" name="sobrenome" placeholder="sobrenome" />
+      <input type="text" [(ngModel)]="nome" id="nome" class="fadeIn first" name="nome" placeholder="Nome" />
+      <input type="text" [(ngModel)]="sobrenome"id="sobrenome" class="fadeIn first" name="sobrenome" placeholder="sobrenome" />
 
       <input type="text" id="Coren" [(ngModel)] ="coren"  
         title ="Coren deve seguir o padrão = XXXXX-TE / XXXXX-ENF /XXXXX-AE" 
@@ -22,11 +22,11 @@
         [(ngModel)]="email" />
 
       <input type="password" id="password" class="fadeIn fourth" name="senha" placeholder="Senha" [(ngModel)]="senha" />
-      <input type="password" id="passwordConfirm" class="fadeIn fourth" name="senhaConfirm" placeholder="Confirmar" />
+      <input type="password" id="passwordConfirm" class="fadeIn fourth" name="senhaConfirm" placeholder="Confirmar" [(ngModel)]="senhaconfir" />
       <div>&nbsp;</div> 
 
       <div id="formFooter" class="fadeIn fourth">
-        <button type="submit" class="btn btn-outline-primary btn enviar_btn" >Enviar</button>&nbsp;&nbsp;
+        <button type="submit" class="btn btn-outline-primary btn enviar_btn" (click)="insereEnfermeiro()" >Enviar</button>&nbsp;&nbsp;
         <button class="btn  btn-outline-danger btn limpar_btn" type="reset">limpar</button>
       </div>
 

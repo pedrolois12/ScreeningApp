@@ -12,20 +12,19 @@
       <div>&nbsp;</div>
       <form>
         <div>
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login" [(ngModel)]="email">
+          <input type="text" id="login" [(ngModel)]="login" class="fadeIn second" name="login" placeholder="Login" >
         </div>
         <div>&nbsp;</div>
 
-        <div>
+        <div> 
          
-          <input type="password" id="password" class="fadeIn third" name="login" placeholder="Senha"
-            [(ngModel)]="senha">
+          <input type="password" id="password" [(ngModel)]="senha" class="fadeIn third" name="login" placeholder="Senha">
         </div>
         <div>&nbsp;</div>
 
         <div id="formFooter" class="fadeIn fourth">
           <button type="button" class="btn btn-outline-primary btn login_btn"
-           (click)="cadastro()">Entrar</button>&nbsp;&nbsp;
+           (click)="validaLogin()">Entrar</button>&nbsp;&nbsp;
           <button type="reset" class="btn btn-outline-danger btn cadastro_btn">Limpar</button>
         </div>
 
