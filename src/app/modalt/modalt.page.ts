@@ -1,10 +1,9 @@
 import { Component, OnInit,OnChanges} from '@angular/core';
 import { ScreeningServiceService } from '../screening-service.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router'
-import { throws } from 'assert';
 import { HttpClient } from '@angular/common/http'
-import { nextTick } from 'process';
+
 @Component({
   selector: 'app-modalt',
   templateUrl: './modalt.page.html',
@@ -19,11 +18,13 @@ export class ModaltPage implements OnInit {
   constructor(public screeningServ: ScreeningServiceService,
               public ToastController: ToastController,
               public route:Router,
-              public http:HttpClient) { }
+              public http:HttpClient,
+              public menuCtrl:MenuController) { }
   public trata_sub;
   public primeira_vez=true;
+
   ngOnInit() {
-    //this.primeira_vez =false;
+    this.menuCtrl.enable(true);
   }
 
   ngOnChanges(){
@@ -31,8 +32,7 @@ export class ModaltPage implements OnInit {
   }
 
  async validaLogin() {
-  this.primeira_vez =false;
-  //  let status;
+  this.primeira_vez = false;
     console.log(this.login);
     console.log(this.senha);
 

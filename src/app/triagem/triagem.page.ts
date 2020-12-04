@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router , NavigationExtras, ActivatedRoute} from '@angular/router';
 import { DorabdominalPage } from '../dorabdominal/dorabdominal.page';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 import { fromEventPattern } from 'rxjs';
 import { ScreeningServiceService} from '../screening-service.service';
 
@@ -22,14 +22,18 @@ export class TriagemPage implements OnInit {
   constructor(public route:Router,
      public navCtrl:NavController ,
      public actRoute:ActivatedRoute,
-     public screeningservice:ScreeningServiceService
+     public screeningservice:ScreeningServiceService,
+     public menuCtrl:MenuController
   
      
 ) { }
 
+
   private nome_enfermeiro;
   private id;
+
   ngOnInit() {
+    this.menuCtrl.enable(true);
     this.resgataFluxo();
     this.actRoute.queryParams.subscribe(
       data=>{

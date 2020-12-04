@@ -14,7 +14,7 @@ export class MenuchefePage  {
     ) { }
 
   ngOnInit(){
-  //  this.openFirst();
+  this.menu.enable(true);
   }
  
   openFirst() {

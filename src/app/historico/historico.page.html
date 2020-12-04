@@ -1,49 +1,38 @@
-<ion-content  menu="first">
-</ion-content>
-
-
+<ion-content>
 <div class="wrapper">
   <div id="formContent">
-
-
-
     <div class="card-header">
       <div class="text-white" class="d-flex justify-content-center" class="fadeIn first">
         <h4> Historico Medico</h4>
       </div>
     </div>
     
-
     <table class="table table-responsive-sm">
-
       <thead>
-      
         <tr>
-            <th colspan="4" id="bor">
+          <th colspan="4" id="bor">
             <div id="divBusca" id="icon">
-              <input type="text" id="txtBusca" placeholder="Buscar..." />
+              <input (keypress)="pesquisa()" (keydown)="pesquisa()" (keyup)="pesquisa()" [(ngModel)]="pesquisa_texto" type="text" id="txtBusca" placeholder="Buscar..." />
               </div>
           </th>
         </tr>
-
         <tr>
           <th scope="col" id="bor">Nome:</th>
           <th scope="col" id="bor">Cpf:</th>
           <th scope="col" id="bor">Data:</th>
-          <!--  <th scope="col" id="bor">Descrição ultimo atendimento:</th>-->
+           <th scope="col" id="bor">Descrição ultimo atendimento:</th>
         </tr>
       </thead>
-
       <tbody>
         <tr *ngFor ="let pacientes of this.paciente">
-          <td>{{this.pacientes.nome}}</td>
-          <td>{{this.pacientes.cpf_rng}}</td>
-          <td>{{this.pacientes.data_ultima_entrada}}</td>
-        <!--  <td style="white-space: pre;">{{this.pacientes.descricao_atendimento | ql}}</td>-->
+          <td id ="{{this.pacientes.id_paciente}}">{{this.pacientes.nome}}</td>
+          <td id ="{{this.pacientes.id_paciente}}">{{this.pacientes.cpf_rng}}</td>
+          <td id ="{{this.pacientes.id_paciente}}">{{this.pacientes.data_ultima_entrada}}</td>
+          <td id ="{{this.pacientes.id_paciente}}">{{this.pacientes.descricao_atendimento}}</td>
         </tr>
-      
       </tbody>
     </table>
-
   </div>
+  
 </div>
+</ion-content>

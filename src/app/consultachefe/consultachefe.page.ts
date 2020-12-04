@@ -3,6 +3,7 @@ import {NgbModal, ModalDismissReasons, NgbDateStruct} from '@ng-bootstrap/ng-boo
 import { ScreeningServiceService } from '../screening-service.service';
 import { Router } from '@angular/router'
 import { NavParams } from '@ionic/angular';
+
 @Component({
   selector: 'app-consultachefe',
   templateUrl: './consultachefe.page.html',

@@ -6,7 +6,7 @@
     width: 100%;
     min-height: 100%;
     padding: 10px;
-    height: 90%;
+    height: auto;
     border-radius: 15px !important;
 }
 
@@ -37,12 +37,8 @@ th {
     margin: 5px;
     width: auto;
     height: 30%;
+    white-space:pre-wrap;
     border: 1px solid  #ffffff;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
     font-weight: bold;
 }
 
@@ -103,4 +99,6 @@ table{
     }
 
 
-    
+    ion-content {
+        --background:  url('../../assets/img/plash.png') no-repeat center center / cover !important;
+      }

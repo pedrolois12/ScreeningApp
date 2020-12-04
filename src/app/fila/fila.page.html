@@ -1,74 +1,101 @@
+<ng-template #modalngx let-modal>
+	<div class="modal-header">
+	  <h4 class="modal-title" id="modal-basic-title">Exclusão de enfermeiro</h4>
+	  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+	<div class="modal-body">
+
+	  <label>Informações sobre paciente</label><br>
+	  <label>Nome: {{this.nome}} </label><br>
+	  <label>CPF/RG: {{this.cpf}} </label><br>
+	  <label>Classificação:{{this.flag}}</label><br>
+	  <label>Sintomas/Observações: {{this.sintomas}} </label><br>
+
+	</div>
+	<div class="modal-footer">
+	  <button type="button" class="btn btn-outline-dark" (click)="modal.close();">Confirmar</button>
+	</div>
+  </ng-template>
+
+  <ng-template #retiradafila let-modal>
+	<div class="modal-header">
+	  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+	<div class="modal-body">
+
+		<label> Paciente : {{this.nome}}</label>
+
+	</div>
+	<div class="modal-footer">
+	  <button type="button" class="btn btn-outline-dark" (click)="modal.close();">Atendido</button>
+	</div>
+  </ng-template>
 
 <ion-content menu="first">
 	<div class="wrapper fadeInDown">
 		<div id="formContent">
-			<div>
+			<div class ='container'>
 				<div class="card-header">
 					<div class="text-white" class="d-flex justify-content-center" class="fadeIn first">
 						<h4>Fila de atendimento - Classificação de cores </h4>
-
-
 					</div>
 				</div>
 				<div>&nbsp;</div>
-				<form>
-
-					<div>&nbsp;</div>
+				<!--<form> -->
 					<fieldset>
 						<legend id="ver">&nbsp;&nbsp;&nbsp;&nbsp;</legend>
-
-						<div>&nbsp;</div>
-
-						<div class="btn-group" role="group" aria-label="Basic example">
-					<!-- 	<ion-badge style="--background:linear-gradient(to right,Red, IndianRed);--padding-end:30px;--padding-start:30px;font-size: 15px;"><h4>Nº: 66</h4></ion-badge>--> 
-							<h4 *ngFor="let verde of this.fila_verde">{{this.verde.nome}} &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i>				
+						<div class="list-group" role="group" aria-label="Basic example">
+							<button style="background:none;" class="list-group-item list-group-item-action active"
+							*ngFor="let vermelho of this.fila_vermelha" value ="{{vermelho.id_paciente}}"> {{this.vermelho.nome}}  
+							<button  name ="consulta" value="{{vermelho.id_paciente}}" (click)="resgata_id(this.vermelho.id_paciente);abre_modal(modalngx)" style="background:none;"> <i class="fas fa-edit fa-lg"> </i></button>
+							<i  (click)="abre_modal(retiradafila);resgata_id(vermelho.id_paciente)" class="fas fa-user-times fa-lg"></i>
+							</button>
 						</div>
-						
+
 					</fieldset>
-
-
-					<div>&nbsp;</div>
 					<fieldset>
 						<legend id="lar">&nbsp;&nbsp;&nbsp;&nbsp;</legend>
-
-						<div>&nbsp;</div>
-
-						<div class="btn-group" role="group" aria-label="Basic example">
-							<h4 *ngFor="let amarelo of this.fila_amarelo">{{this.amarelo.nome}} &nbsp;&nbsp; Nº:2</h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i>
-						</div>
-					</fieldset>
-
-
-					<div>&nbsp;</div>
-					<fieldset>
-						<legend id="ama">&nbsp;&nbsp;&nbsp;&nbsp;</legend>
-
-						<div>&nbsp;</div>
-
+						
 						<div class="list-group" role="group" aria-label="Basic example">
-					      <button class="list-group-item list-group-item-action active" *ngFor="let vermelho of this.fila_vermelha"><i class="fas fa-edit fa-lg"></i> <i class="fas fa-user-times fa-lg"></i> {{this.vermelho.nome}} </button>
+							<button style="background:none;" class="list-group-item list-group-item-action active"
+								*ngFor="let laranja of this.fila_laranja" value ="{{laranja.id_paciente}}"> {{this.laranja.nome}}  
+								<button  name ="consulta" value="{{laranja.id_paciente}}" (click)="resgata_id(this.laranja.id_paciente);abre_modal(modalngx)" style="background:none;"> <i class="fas fa-edit fa-lg"> </i></button>
+								<i  (click)="abre_modal(retiradafila);resgata_id(laranja.id_paciente)" class="fas fa-user-times fa-lg"></i>
+								</button>
 						</div>
 					</fieldset>
-					<div>&nbsp;</div>
+					<fieldset>
+						<legend id="ama">&nbsp;&nbsp;&nbsp;&nbsp;</legend>		
+						<div class="list-group" role="group" aria-label="Basic example">
+							<button style="background:none;" class="list-group-item list-group-item-action active"
+								*ngFor="let amarelo of this.fila_amarelo" value ="{{amarelo.id_paciente}}"> {{this.amarelo.nome}} 
+								<i (click)="abre_modal(modalngx);resgata_id(this.amarelo.id_paciente)" class="fas fa-edit fa-lg"> </i>
+								<i (click)="abre_modal(retiradafila);resgata_id(this.amarelo.id_paciente)" class="fas fa-user-times fa-lg"></i>
+						</button>
+						</div>
+					</fieldset>
 					<fieldset>
 						<legend id="verd">&nbsp;&nbsp;&nbsp;&nbsp;</legend>
-
-						<div>&nbsp;</div>
-
-						<div class="btn-group" role="group" aria-label="Basic example">
-							<h4 *ngFor="let laranja of this.fila">{{this.laranja.nome}} &nbsp;&nbsp; </h4>&nbsp;&nbsp;<i class="fas fa-edit fa-lg"></i>&nbsp;&nbsp;<i class="fas fa-user-times fa-lg"></i> 
+						<div class="list-group" role="group" aria-label="Basic example">
+							<button style="background:none;" class="list-group-item list-group-item-action active"
+								*ngFor="let verde of this.fila_verde" value ="{{verde.id_paciente}}"> {{this.verde.nome}} 
+								<i (click)="abre_modal(modalngx);resgata_id(verde.id_paciente)" class="fas fa-edit fa-lg" > </i>
+								<i (click)="abre_modal(retiradafila);resgata_id(verde.id_paciente)" class="fas fa-user-times fa-lg"></i>
+						    </button>
 						</div>
-
 					</fieldset>
-					<div>&nbsp;</div>
 					<div id="formFooter" class="fadeIn fourth">
-						&nbsp;&nbsp;
-						<button type="button" class="btn btn-outline-warning btn finalizar_btn"> Finalizar
+						<!--<button type="button" class="btn btn-outline-warning btn finalizar_btn"> Finalizar
 						</button>&nbsp;&nbsp;
 						<button class="btn btn-outline-danger btn finalizar_btn" type="reset">limpar</button>
+					    -->
 					</div>
-					
-				</form>
+
+				<!--</form>-->
 			</div>
 		</div>
 	</div>
