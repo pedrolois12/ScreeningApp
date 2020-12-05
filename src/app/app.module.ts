@@ -14,7 +14,10 @@ import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { FontAwesomeModule } from '@fortawesome/fontawesome-free/webfonts';
-
+import { registerLocaleData } from "@angular/common";
+import {  LOCALE_ID } from "@angular/core";
+import ptBr from "@angular/common/locales/pt";
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,14 +28,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   , AngularFireModule.initializeApp(environment.firebaseConfig),
   AngularFireAuthModule,
   HttpClientModule,
+  
   NgbModule
   
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
+ ,    { provide: LOCALE_ID, useValue: "pt" },
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule {}
