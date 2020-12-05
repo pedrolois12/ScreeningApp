@@ -97,4 +97,9 @@ export class ScreeningServiceService {
     
   }
 
+  alterarFila(fila){
+    let sintomas =this.url+"alterarFila";
+    return this.http.post(sintomas, fila);
+  }
+
 }

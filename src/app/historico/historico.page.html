@@ -1,8 +1,4 @@
 <ion-content>
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-  <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
 <div class="wrapper">
   <div id="formContent">
     <div class="card-header">
@@ -24,15 +20,15 @@
           <th scope="col" id="bor">Nome:</th>
           <th scope="col" id="bor">Cpf:</th>
           <th scope="col" id="bor">Data:</th>
-           <th scope="col" id="bor">Ultimo atendimento:</th>
+           <th scope="col" id="bor">Descrição ultimo atendimento:</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor ="let pacientes of this.paciente">
-          <td id ="{{this.pacientes.id_paciente}}" >{{this.pacientes.nome}}</td>
+          <td id ="{{this.pacientes.id_paciente}}">{{this.pacientes.nome}}</td>
           <td id ="{{this.pacientes.id_paciente}}">{{this.pacientes.cpf_rng}}</td>
-          <td id ="{{this.pacientes.id_paciente}}">{{this.pacientes.data_ultima_entrada|date:"EEEE,  d MMMM y, HH:mm a"}}</td>
-          <td id ="{{this.pacientes.id_paciente}}" >{{this.pacientes.descricao_atendimento}}</td>
+          <td id ="{{this.pacientes.id_paciente}}">{{this.pacientes.data_ultima_entrada | date:"medium"}}</td>
+          <td id ="{{this.pacientes.id_paciente}}">{{this.pacientes.descricao_atendimento}}</td>
         </tr>
       </tbody>
     </table>

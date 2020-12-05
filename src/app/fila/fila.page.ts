@@ -39,7 +39,8 @@ getData(){
     data=>{
       this.fila = this.fila.concat(data);
       //console.log(paciente)
-
+      let de ="";
+     
       //this.fila = paciente;
       console.log( this.fila)
       this.fila_vermelha = new Array<any>();
@@ -82,6 +83,14 @@ resgata_id(id){
       }
   }
 }
+
+alterar_fila(){
+  let fila = {id:this.id}
+  this.ScreeningServ.alterarFila(fila).subscribe();
+  this.getData();
+  
+}
+
 
 abre_modal(content){
   this.modalService.open( content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

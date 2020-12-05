@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from '../autenticacao.service';
 import { Router } from '@angular/router';
-import { ToastController, MenuController } from '@ionic/angular';
+import { ToastController, MenuController, IonicModule } from '@ionic/angular';
 import { ModaltPage } from '../modalt/modalt.page';
-import { ModalController } from '@ionic/angular';
+import { ModalController, Platform } from '@ionic/angular';
 import {ScreeningServiceService} from '../screening-service.service';
 @Component({
   selector: 'app-login',
@@ -18,19 +18,26 @@ export class LoginPage implements OnInit {
     public modalController: ModalController,
     public ToastController: ToastController,
     public menuCtrl: MenuController,
-    public ScrenningServ : ScreeningServiceService
-
+    public ScrenningServ : ScreeningServiceService,
+    public platform:Platform
   ) { }
 
   ngOnInit() {
     this.menuCtrl.enable(false);
   }
 
- 
+   onBackPressed(){
+      navigator['app'].exitApp();
+  }
+
   public email:string ="";
   public senha:string="";
   public mensagem:string="";
 
+  addEventListener(){
+    
+  }
+  
   insereUsuario() {
     let tem_arroba;
 
