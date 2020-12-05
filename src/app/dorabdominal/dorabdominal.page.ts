@@ -2,7 +2,7 @@ import { Component, Input, OnInit, AfterViewInit, OnChanges } from '@angular/cor
 import { concat, fromEventPattern } from 'rxjs';
 import { ScreeningServiceService } from '../screening-service.service';
 import { HttpClientModule, HttpHeaders, HttpParams } from '@angular/common/http';
-import { ModalController, NavController, MenuController, ToastController } from '@ionic/angular';
+import { ModalController, NavController, MenuController } from '@ionic/angular';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { ModalOnePage } from '../modal-one/modal-one.page';
 
@@ -14,8 +14,7 @@ import { ModalOnePage } from '../modal-one/modal-one.page';
 export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
 
   constructor(public http: HttpClientModule, public screeningServ: ScreeningServiceService, public navCtrl: NavController,
-    public route: Router, public actRoute: ActivatedRoute, public modalCtrl:ModalController, public menuCtrl:MenuController,
-    public ToastController:ToastController
+    public route: Router, public actRoute: ActivatedRoute, public modalCtrl:ModalController, public menuCtrl:MenuController
 
   ) { }
   public observacoes;
@@ -35,7 +34,6 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
   public recupera_flag;
   private nome_enfermeiro;
   private id;
-  public mensagem;
 
 
   ngOnChanges() {
@@ -96,7 +94,7 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
     });
 
     if(this.recupera_flag =="VERMLEHO"){
-      color = "DarkRed";
+      color = "Crimson";
     }
     if(this.recupera_flag =="LARANJA"){
       color = "DarkOrange";
@@ -134,12 +132,10 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
       console.log(data);
     });
 
-    let descricao_atendimento =this.recupera_sintoma +"\n" +this.observacoes
     let fila = {nome:this.nome  
                ,flag:this.recupera_flag
                ,cpf_rg: this.cpf
-               ,atendido:false
-              ,descricao_atendimento:descricao_atendimento}
+               ,atendido:false}
 
     this.screeningServ.inserePaciente(fila).subscribe(
       data =>{
@@ -166,14 +162,6 @@ export class DorabdominalPage implements OnInit, AfterViewInit, OnChanges {
         console.log(error);
       }
     )
-    this.mensagem="Paciente triado! Enviado email";
-    this.exibeMensagem();
-    setTimeout( 
-      ()=>{
-      this.route.navigate(['/menu'])  
-    }, 5000);
-
-    //this.route.navigate(['/menu']);
   }
 
 
@@ -208,15 +196,6 @@ console.log(this.recupera_sintoma);
 resgata_dor(nivel:number, cor:String){
     this.nivel_dor = nivel;
     this.cor_dor = cor;
-}
-
-
-async exibeMensagem(){  
-  const toast = await this.ToastController.create({
-    message:this.mensagem,
-    duration:1700
-  });
-  toast.present();
 }
 
 }

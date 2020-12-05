@@ -56,28 +56,6 @@ export class TriagemPage implements OnInit {
 
   }
 
-  valida_cpf_rg(){
-    let reg = new RegExp("(([0-9]){3}\.([0-9]){3}\.([0-9]){3}-([0-9]){2}) |(([0-9]){2}\.([0-9]){3}\.([0-9]){3}-([0-9]){1})", "g")
-    let cpf_rg:string;
-    cpf_rg = this.cpf;
-    let cpf_rg_new;
-
-    if(this.cpf.length ==11){
-      cpf_rg_new = cpf_rg.substr(0,3)+'.'+cpf_rg.substr(3,3)+'.'+cpf_rg.substr(6,3)+'-'+cpf_rg.substr(9)
-      console.log(cpf_rg_new);
-    }
-    if(this.cpf.length <11){
-      cpf_rg_new = cpf_rg.substr(0,2)+'.'+cpf_rg.substr(2,3)+'.'+cpf_rg.substr(5,3)+'-'+cpf_rg.substr(8)
-      console.log(cpf_rg_new);
-    }
-    this.cpf = cpf_rg_new
-    if(!reg.test(this.cpf)){
-        document.getElementById("Cpf").style.borderColor="red"
-    }else{
-      document.getElementById("Cpf").style.borderColor="green"
-    }
-  }
-
   escolhe_fluxo(){
    let valores=[{
      nome:this.nome,

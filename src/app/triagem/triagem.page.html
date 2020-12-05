@@ -13,11 +13,11 @@
         <fieldset>
           <legend><b>Dados do paciente: </b></legend>
           <div>&nbsp;</div>
- 
+
           <div class="input-group mb-3">
             <input type="text" id="nome" [(ngModel)]="nome" class="fadeIn first" name="nome" placeholder="Nome" />
             <input type="text" id="sobrenome" [(ngModel)]="sobrenome" class="fadeIn first" name="sobrenome" placeholder="sobrenome" />
-            <input (change)="valida_cpf_rg()" type="text" id="Cpf" [(ngModel)]="cpf" class="fadeIn first" name="cpf" placeholder="Cpf ou Rg" />
+            <input type="text" id="Cpf" [(ngModel)]="cpf" class="fadeIn first" name="cpf" placeholder="Cpf ou Rg" />
           </div>
         </fieldset>
         <div>&nbsp;</div>
